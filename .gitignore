@@ -4,7 +4,9 @@
 *.dll
 *.so
 *.dylib
-
+.vscode
+vendor
+*.sum
 # Test binary, built with `go test -c`
 *.test
 
