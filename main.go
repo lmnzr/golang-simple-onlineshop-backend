@@ -10,6 +10,5 @@ func main() {
 
 	router.GET("/",handler.Hello)
 
-
 	router.Start(":9000")
 }
