@@ -6,5 +6,6 @@ test:
 test-cover:
 	@ go test simpleshop/test/... -coverpkg=./... -coverprofile=cover.txt
 	@ go tool cover -html=cover.txt -o cover.html   
-	                                                                                 
-.PHONY: test test-cover clean
+run:
+	@ go build && ./simpleshop	                                                                                 
+.PHONY: run test test-cover clean
