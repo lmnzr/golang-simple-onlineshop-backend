@@ -1,11 +1,12 @@
+packagename = simpleshop
 # Build And Development
 clean:
-	@ rm -f *.out || rm -f *.html || rm -f *.exe 
+	@ sudo rm -f $(packagename).bin $(packagename).exe cover.txt cover.html cover.out
 test:
-	@ go test simpleshop/test/... 
+	@ go test $(packagename)/test/... 
 test-cover:
-	@ go test simpleshop/test/... -coverpkg=./... -coverprofile=cover.txt
+	@ go test $(packagename)/test/... -coverpkg=./... -coverprofile=cover.txt
 	@ go tool cover -html=cover.txt -o cover.html   
 run:
-	@ go build && ./simpleshop	                                                                                 
+	@ go build -o $(packagename).bin && ./$(packagename).bin	                                                                                 
 .PHONY: run test test-cover clean

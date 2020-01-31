@@ -34,6 +34,8 @@ Just A Project To Learn and Explore Go Lang
 - [ ] Separate Configuration From Code
 - [ ] Enable Setup Port From CLI
 - [ ] JWT Middleware
+- [ ] DB Model
+- [ ] DB Migration
 ### Second Milestone
 - [ ] User Schema
 - [ ] [User] Register New User
