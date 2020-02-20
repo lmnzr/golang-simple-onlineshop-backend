@@ -1,0 +1,30 @@
+basePath: /api
+definitions:
+  handler.HTTPResponse:
+    properties:
+      d:
+        example: Hello World !!!
+        type: string
+      s:
+        example: 200
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: Swagger API for Golang Project Simpleshop.
+  license: {}
+  termsOfService: http://swagger.io/terms/
+  title: Simpleshop Swagger API
+  version: "1.0"
+paths:
+  /:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.HTTPResponse'
+      summary: Our Favorite words
+swagger: "2.0"

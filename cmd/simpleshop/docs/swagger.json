@@ -1,0 +1,45 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger API for Golang Project Simpleshop.",
+        "title": "Simpleshop Swagger API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {},
+        "license": {},
+        "version": "1.0"
+    },
+    "basePath": "/api",
+    "paths": {
+        "/": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Our Favorite words",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.HTTPResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handler.HTTPResponse": {
+            "type": "object",
+            "properties": {
+                "d": {
+                    "type": "string",
+                    "example": "Hello World !!!"
+                },
+                "s": {
+                    "type": "integer",
+                    "example": 200
+                }
+            }
+        }
+    }
+}

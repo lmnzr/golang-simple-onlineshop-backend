@@ -29,7 +29,7 @@ Just A Project To Learn and Explore Go Lang
 - [x] Coverage Test Backbone
 - [x] Makefile
 - [x] CORS Configuration
-- [ ] OpenAPI / Swagger Documentation
+- [x] OpenAPI / Swagger Documentation
 - [ ] Logging Middleware
 - [ ] Separate Configuration From Code
 - [ ] Enable Setup Port From CLI
