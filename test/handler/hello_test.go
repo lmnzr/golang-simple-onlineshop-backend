@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
-	"simpleshop/handler"
+	"github.com/lmnzr/simpleshop/handler"
 	"testing"
 )
 

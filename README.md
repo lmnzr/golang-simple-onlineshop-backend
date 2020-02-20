@@ -21,14 +21,14 @@ Just A Project To Learn and Explore Go Lang
 - Monolith (Second Milestone Monolith Application)
 - Master (Latest Milestone)/(Final Milestone - Kubernetes Ready Microservices Application)
 
-## Milestone
+## Milestones
 ### First Milestone
 - [x] Basic Structure
 - [x] Healtcheck/Hello Endpoint
 - [x] Test Case Backbone
 - [x] Coverage Test Backbone
 - [x] Makefile
-- [ ] CORS Configuration
+- [x] CORS Configuration
 - [ ] OpenAPI / Swagger Documentation
 - [ ] Logging Middleware
 - [ ] Separate Configuration From Code

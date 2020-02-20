@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
-	"simpleshop/dataobject"
+	"github.com/lmnzr/simpleshop/dataobject"
 )
 
 // Hello Handler
