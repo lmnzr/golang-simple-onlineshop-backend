@@ -1,6 +1,14 @@
-basePath: /api
 definitions:
   handler.HTTPResponse:
+    properties:
+      d:
+        example: Hello World !!!
+        type: string
+      s:
+        example: 200
+        type: integer
+    type: object
+  models.Hello:
     properties:
       d:
         example: Hello World !!!
@@ -26,5 +34,15 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/handler.HTTPResponse'
+      summary: Our Favorite words
+  /hello:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Hello'
       summary: Our Favorite words
 swagger: "2.0"

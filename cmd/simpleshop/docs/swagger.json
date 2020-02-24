@@ -8,7 +8,6 @@
         "license": {},
         "version": "1.0"
     },
-    "basePath": "/api",
     "paths": {
         "/": {
             "get": {
@@ -25,10 +24,39 @@
                     }
                 }
             }
+        },
+        "/hello": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Our Favorite words",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.Hello"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
         "handler.HTTPResponse": {
+            "type": "object",
+            "properties": {
+                "d": {
+                    "type": "string",
+                    "example": "Hello World !!!"
+                },
+                "s": {
+                    "type": "integer",
+                    "example": 200
+                }
+            }
+        },
+        "models.Hello": {
             "type": "object",
             "properties": {
                 "d": {
