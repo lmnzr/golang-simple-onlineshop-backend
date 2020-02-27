@@ -10,6 +10,7 @@ func Routes(router *echo.Echo) {
 	// Routes
 	hello := router.Group("/hello")
 	{
-		hello.GET("",handlers.Hello)
+		hello.GET("/", handlers.GetHello)
+		hello.POST("/", handlers.PostHello)
 	}
 }

@@ -1,17 +1,19 @@
 package middleware
 
 import (
-	"net/http"
 	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/rs/cors"
+	"net/http"
 )
 
 //CORS : Middleware
-func CORS(router *echo.Echo)  {
+func CORS() *cors.Cors {
 	// CORS restricted
-	router.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
-		AllowHeaders: []string{"Content-Type", "Authorization"},
-	}))
+	corsMiddleware := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{http.MethodGet, http.MethodPost, http.MethodDelete, http.MethodPut},
+		AllowedHeaders: []string{echo.HeaderContentType, echo.HeaderAuthorization},
+		// Debug: true,
+	})
+	return corsMiddleware
 }

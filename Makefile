@@ -4,6 +4,8 @@ packagename = simpleshop
 init:
 	@ go mod init $(moduleowner)$(packagename)
 	@ go mod vendor 
+update:
+	@ go mod vendor
 clean:
 	@ sudo rm -rf $(packagename).bin $(packagename).exe cover.txt cover.html cover.out build
 test:
@@ -16,4 +18,4 @@ run:
 	@ go build -o ./build/$(packagename).bin $(moduleowner)$(packagename)/cmd/$(packagename)  && ./build/$(packagename).bin	  
 swagger:
 	@ cd cmd/$(packagename) && swag init
-.PHONY: init run test test-cover clean swagger
+.PHONY: init update run test test-cover clean swagger

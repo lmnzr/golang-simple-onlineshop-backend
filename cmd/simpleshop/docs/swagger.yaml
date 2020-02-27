@@ -13,6 +13,9 @@ definitions:
       d:
         example: Hello World !!!
         type: string
+      o:
+        example: Default
+        type: string
       s:
         example: 200
         type: integer
@@ -35,7 +38,7 @@ paths:
           schema:
             $ref: '#/definitions/handler.HTTPResponse'
       summary: Our Favorite words
-  /hello:
+  /hello/:
     get:
       produces:
       - application/json
@@ -44,5 +47,27 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Hello'
-      summary: Our Favorite words
+      summary: Get Our Favorite words
+    post:
+      parameters:
+      - description: Your Own Hello Word
+        in: body
+        name: m
+        required: true
+        schema:
+          type: string
+      - description: Your Own Hello Word Signature
+        in: body
+        name: o
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Hello'
+      summary: Save Our Favorite words
 swagger: "2.0"

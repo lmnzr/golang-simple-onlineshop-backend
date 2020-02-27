@@ -5,7 +5,7 @@ Just A Project To Learn and Explore Go Lang
 - Go Lang
 - Echo (Go Minimalist Web Framework)
 - GORM (Go ORM)
-- MySQL (Database)
+- PostgreSQL (Database)
 - Docker
 - Kubernetes
 - Travis CI/CD
@@ -30,12 +30,12 @@ Just A Project To Learn and Explore Go Lang
 - [x] Makefile
 - [x] CORS Configuration
 - [x] OpenAPI / Swagger Documentation
-- [ ] Logging Middleware
-- [ ] Separate Configuration From Code
-- [ ] Enable Setup Port From CLI
+- [x] Logging Middleware
+- [x] Separate Configuration From Code
 - [ ] JWT Middleware
 - [ ] DB Model
 - [ ] DB Migration
+- [ ] Async Write To DB Using Go Routine And Channel
 ### Second Milestone
 - [ ] User Schema
 - [ ] [User] Register New User
