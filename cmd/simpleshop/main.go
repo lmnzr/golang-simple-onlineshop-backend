@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	_ "github.com/lmnzr/simpleshop/cmd/simpleshop/docs"
@@ -18,7 +17,7 @@ import (
 )
 
 type auth struct {
-	Token string `json:"token" xml:"token" example:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJleGFtcGxlLmNvbSIsImV4cCI6MTU4Mjg4NjI1NiwiaWF0IjoxNTgyODg1MzU2LCJpc3MiOiJleGFtcGxlLmNvbSIsInN1YiI6ImNsaWVudCIsIm5hbWUiOiJBbG1hcyIsInV1aWQiOiIxMTAzNyIsImlzQWRtaW4iOnRydWV9.FUH8Pu6bBj8_5g6hiUygJD1_swb7k8tvTY-l0EfNk90"`
+	Token string `json:"token" xml:"token" example:"eyJhbGciOiJIU"`
 }
 
 func init() {
@@ -57,7 +56,8 @@ func main() {
 
 	router.GET("/", public)
 	router.GET("/swagger/*", echoSwagger.WrapHandler)
-	router.GET("/forbidden/", forbidden, middleware.JwtMiddleware)
+	router.GET("/forbidden/", forbidden)
+	router.GET("/protected/", protected, middleware.JwtMiddleware)
 	router.GET("/credential/", credential)
 
 	hello.Routes(router)
@@ -76,7 +76,12 @@ func public(c echo.Context) error {
 }
 
 func forbidden(c echo.Context) error {
-	return echo.NewHTTPError(404, "Forbidden Land")
+	return echo.NewHTTPError(500, "Forbidden Land")
+}
+
+func protected(c echo.Context) error {
+	name := c.Get("name").(string)
+	return c.String(http.StatusOK, "Welcome "+name)
 }
 
 func credential(c echo.Context) error {
@@ -90,5 +95,5 @@ func credential(c echo.Context) error {
 	a := auth{
 		Token: token,
 	}
-	return c.JSON(http.StatusOK,a)
+	return c.JSON(http.StatusOK, a)
 }
