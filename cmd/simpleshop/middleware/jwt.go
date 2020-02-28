@@ -17,7 +17,7 @@ func JwtMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 		if val != "" {
 			parsed := strings.SplitN(val, " ", 2)
 			if len(parsed) == 2 {
-				if strings.TrimSpace(parsed[0]) == "Bearer"{
+				if strings.TrimSpace(parsed[0]) == "Bearer" {
 					val = parsed[1]
 					val = strings.TrimSpace(val)
 
@@ -27,10 +27,10 @@ func JwtMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
 						c.Set("uuid", credential.UUID)
 						c.Set("isAdmin", credential.Admin)
 						valid = true
-					} 
+					}
 				}
-			} 
-		} 
+			}
+		}
 
 		if !valid {
 			return echo.NewHTTPError(401, "Unathorized")

@@ -1,16 +1,17 @@
 package log
 
 import (
-	"github.com/labstack/echo/v4"
-	log "github.com/sirupsen/logrus"
-	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/http"
-	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/config"
 	"time"
+
+	"github.com/labstack/echo/v4"
+	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/config"
+	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/http"
+	log "github.com/sirupsen/logrus"
 )
 
 //Logger : Middleware
 func Logger(c echo.Context) *log.Entry {
-	config,conferr := config.GetConfig()
+	config, conferr := config.GetConfig()
 
 	var timeformat string
 	var timezone string

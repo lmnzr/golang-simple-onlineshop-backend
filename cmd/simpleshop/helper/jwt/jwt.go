@@ -1,9 +1,10 @@
 package jwt
 
 import (
+	b64 "encoding/base64"
 	"errors"
 	"time"
-	b64 "encoding/base64"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/config"
 )

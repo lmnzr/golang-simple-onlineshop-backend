@@ -3,8 +3,9 @@ package http
 import (
 	"bytes"
 	"fmt"
-	"github.com/labstack/echo/v4"
 	"io/ioutil"
+
+	"github.com/labstack/echo/v4"
 )
 
 //StringifyHTTPHeader :
@@ -14,17 +15,17 @@ func StringifyHTTPHeader(c echo.Context) string {
 	// Loop over header names
 	for name, values := range m {
 		// Loop over all values for the name.
-		fmt.Fprintf(b,"{")
+		fmt.Fprintf(b, "{")
 		for _, value := range values {
 			fmt.Fprintf(b, "\"%s\":\"%s\",", name, value)
 		}
-		fmt.Fprintf(b,"}")
+		fmt.Fprintf(b, "}")
 	}
 	return b.String()
 }
 
 //FindHTTPHeader :
-func FindHTTPHeader(headerName string, c echo.Context) (string,string) {
+func FindHTTPHeader(headerName string, c echo.Context) (string, string) {
 	var key string
 	var val string
 	m := c.Request().Header
@@ -33,7 +34,7 @@ func FindHTTPHeader(headerName string, c echo.Context) (string,string) {
 	// Loop over header names
 	for name, values := range m {
 		// Loop over all values for the name.
-		fmt.Fprintf(b,"{")
+		fmt.Fprintf(b, "{")
 		for _, value := range values {
 			if name == headerName {
 				key = name
@@ -42,7 +43,7 @@ func FindHTTPHeader(headerName string, c echo.Context) (string,string) {
 			}
 		}
 	}
-	return key,val
+	return key, val
 }
 
 //StringifyHTTPBody :

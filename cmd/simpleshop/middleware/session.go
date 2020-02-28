@@ -2,16 +2,17 @@ package middleware
 
 import (
 	b64 "encoding/base64"
-	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/config"
+
 	"github.com/gorilla/sessions"
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
+	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/config"
 )
 
 //Session : Middleware
 func Session() echo.MiddlewareFunc {
-	
-	config,conferr := config.GetConfig()
+
+	config, conferr := config.GetConfig()
 
 	var sessionsecret string
 

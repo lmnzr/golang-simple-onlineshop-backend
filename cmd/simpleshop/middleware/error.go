@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"fmt"
+
 	"github.com/labstack/echo/v4"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/helper/log"
 )
@@ -34,7 +35,7 @@ func Error(err error, router echo.Context) {
 		code = 400
 	}
 
-	logmessage := fmt.Sprintf("%d - %v",code, message)
+	logmessage := fmt.Sprintf("%d - %v", code, message)
 	log.Logger(router).Error(logmessage)
 	NewStandardError(message, code, router)
 }

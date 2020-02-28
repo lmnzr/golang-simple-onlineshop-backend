@@ -3,9 +3,10 @@ package handlers
 import (
 	// "encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/labstack/echo/v4"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/hello/controllers"
-	"net/http"
 )
 
 // GetHello Endpoint godoc

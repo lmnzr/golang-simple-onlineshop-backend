@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-//GetEnv :
+//Getenv :
 func Getenv(key string, fallback string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		return value
@@ -13,7 +13,7 @@ func Getenv(key string, fallback string) string {
 	return fallback
 }
 
-//GetEnvI :
+//GetenvI :
 func GetenvI(key string, fallback int) int {
 	if value, ok := os.LookupEnv(key); ok {
 		ival, err := strconv.Atoi(value)
