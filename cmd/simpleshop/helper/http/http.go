@@ -13,14 +13,26 @@ func StringifyHTTPHeader(c echo.Context) string {
 	m := c.Request().Header
 	b := new(bytes.Buffer)
 	// Loop over header names
+	fmt.Fprintf(b, "[")
+	n := len(m)
+	i := 0
 	for name, values := range m {
 		// Loop over all values for the name.
-		fmt.Fprintf(b, "{")
+		nn := len(values)
+		ii := 0
 		for _, value := range values {
-			fmt.Fprintf(b, "\"%s\":\"%s\",", name, value)
+			fmt.Fprintf(b, "{\"%s\":\"%s\"}", name, value)
+			if ii < nn-1 {
+				fmt.Fprintf(b, ",")
+			}
+			ii++
 		}
-		fmt.Fprintf(b, "}")
+		if i < n-1 {
+			fmt.Fprintf(b, ",")
+		}
+		i++
 	}
+	fmt.Fprintf(b, "]")
 	return b.String()
 }
 
