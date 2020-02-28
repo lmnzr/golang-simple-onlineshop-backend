@@ -2,7 +2,7 @@ package handlers
 
 import (
 	// "encoding/json"
-	// "fmt"
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/hello/controllers"
 	"net/http"
@@ -14,7 +14,9 @@ import (
 // @Success 200 {object} models.Hello
 // @Router /hello/ [get]
 func GetHello(context echo.Context) error {
-	data := controllers.GetMyHello("Hello World !!!",context)
+
+	fmt.Println(context.Get("name"))
+	data := controllers.GetMyHello("Hello World !!!", context)
 	// jsondata, _ := json.Marshal(data)
 	// fmt.Println(string(jsondata))
 	return context.JSON(http.StatusOK, data)

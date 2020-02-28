@@ -32,7 +32,7 @@ Just A Project To Learn and Explore Go Lang
 - [x] OpenAPI / Swagger Documentation
 - [x] Logging Middleware
 - [x] Separate Configuration From Code
-- [ ] JWT Middleware
+- [x] JWT Middleware
 - [ ] DB Model
 - [ ] DB Migration
 - [ ] Async Write To DB Using Go Routine And Channel

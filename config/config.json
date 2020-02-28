@@ -1,6 +1,14 @@
 {
   "appName": "simpleshop",
+
   "loggerTimeZone": "Asia/Jakarta",
   "loggerTimeFormat": "2006-01-02T15:04:05",
-  "sessionSecret": "thequickbrownfoxjumpoverthelazydog"
+
+  "sessionSecret": "thequickbrownfoxjumpoverthelazydog",
+
+  "jwtAudience": "simpleshop.com",
+  "jwtSubject": "client",
+  "jwtIssuer": "simpleshop.com",
+  "jwtExpiresMinute": 30,
+  "jwtSignkey": "thequickbrownfoxjumpoverthelazydog"
 }

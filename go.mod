@@ -8,6 +8,8 @@ require (
 	github.com/boj/redistore v0.0.0-20180917114910-cd5dcc76aeff // indirect
 	github.com/buger/jsonparser v0.0.0-20191204142016-1a29609e0929
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/gbrlsnchs/jwt/v3 v3.0.0-rc.1 // indirect
 	github.com/gin-gonic/gin v1.5.0 // indirect
 	github.com/go-openapi/spec v0.19.6 // indirect
 	github.com/go-openapi/swag v0.19.7 // indirect

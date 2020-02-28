@@ -23,6 +23,28 @@ func StringifyHTTPHeader(c echo.Context) string {
 	return b.String()
 }
 
+//FindHTTPHeader :
+func FindHTTPHeader(headerName string, c echo.Context) (string,string) {
+	var key string
+	var val string
+	m := c.Request().Header
+	b := new(bytes.Buffer)
+
+	// Loop over header names
+	for name, values := range m {
+		// Loop over all values for the name.
+		fmt.Fprintf(b,"{")
+		for _, value := range values {
+			if name == headerName {
+				key = name
+				val = value
+				break
+			}
+		}
+	}
+	return key,val
+}
+
 //StringifyHTTPBody :
 func StringifyHTTPBody(c echo.Context) string {
 	var bodyBytes []byte
