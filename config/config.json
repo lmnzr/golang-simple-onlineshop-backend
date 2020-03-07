@@ -10,5 +10,9 @@
   "jwtSubject": "client",
   "jwtIssuer": "simpleshop.com",
   "jwtExpiresMinute": 30,
-  "jwtSignkey": "thequickbrownfoxjumpoverthelazydog"
+  "jwtSignkey": "thequickbrownfoxjumpoverthelazydog",
+
+  "dbMaxConn": 25,
+  "dbMaxIddle": 25,
+  "dbMaxLifeTime": 5
 }
