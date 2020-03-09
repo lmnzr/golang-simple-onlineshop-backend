@@ -111,7 +111,7 @@ func main() {
 	city.SetIsKnown(false)
 	city.SetName("Groningen")
 	city.SetDeletedTime(time.Now())
-	city.SetID(10)
+	city.SetID(1)
 
 	// fmt.Println(reflectutil.GetFieldTag(city,city.ID,"field"))
 
@@ -130,16 +130,16 @@ func main() {
 	// orders = append(orders, order.NewOrderDescending("id"))
 	// citymodel.SetOrders(orders)
 
-	_, querr := citymodel.Delete()
-
+	res, querr := citymodel.RetrieveAll()
 	// citymodel.Retrieve()
 
 	if querr != nil {
 		logutil.Logger(nil).Error(querr)
-		// } else {
-		// 	for  i := 0; i < len(res); i++ {
-		// 		fmt.Println(string(res[:][i]))
-		// 	}
+	} else {
+		for  i := 0; i < len(res); i++ {
+			fmt.Println(string(res[:][i]))
+		}
+			
 	}
 
 	// res2,querr2 := citymodel.Retrieve()

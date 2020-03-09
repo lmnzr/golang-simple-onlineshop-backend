@@ -1,10 +1,9 @@
 package database
 
 import (
+	"errors"
 	"fmt"
 	"strings"
-
-	"errors"
 
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/database/filter"
 	reflectutil "github.com/lmnzr/simpleshop/cmd/simpleshop/helper/model"
@@ -252,6 +251,19 @@ func (q *queryBuilder) isSoftDelete() bool {
 	return reflectutil.IsFieldExist(q.QueryModel.Model, "is_deleted", "field")
 }
 
+func (q *queryBuilder) setDeleteValue() *queryBuilder {
+	if q.param == nil {
+		var param []interface{}
+		var value []interface{}
+		q.param = param
+		q.value = value
+	}
+	q.field = append(q.field, "is_deleted")
+	q.value = append(q.value, true)
+
+	return q
+}
+
 func (q *queryBuilder) checkFiltered() *queryBuilder {
 
 	if q.QueryModel.Filters == nil {
@@ -282,16 +294,19 @@ func queryBuild(method string, qm QueryModel) (dbQuery DBQuery, err error) {
 
 	case "UPDATE":
 		qs.param = structmap.Values
+
+		qs.SetFilters(mapFilter(structmap.Filter))
 		qs.checkFiltered()
 		qs.commandUpdate().set().where()
 
 	case "DELETE":
-		// qs.param = structmap.Values
-		qs.checkFiltered()
-
 		if qs.isSoftDelete() {
+			qs.setDeleteValue()
+			qs.SetFilters(mapFilter(structmap.Filter))
+			qs.param = qs.value
 			qs.commandUpdate().set().where()
 		} else {
+			qs.SetFilters(mapFilter(structmap.Filter))
 			qs.commandDelete().where()
 		}
 
@@ -310,4 +325,13 @@ func queryBuild(method string, qm QueryModel) (dbQuery DBQuery, err error) {
 		SelectType:  structmap.Values,
 	}
 	return dbq, err
+}
+
+func mapFilter(filtermap map[string]string) []filter.Filter {
+	var filters []filter.Filter
+	for k, v := range filtermap {
+		filters = append(filters, filter.NewAndFilter(k, v))
+	}
+
+	return filters
 }
