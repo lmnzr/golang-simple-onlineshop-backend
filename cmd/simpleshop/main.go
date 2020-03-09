@@ -107,15 +107,15 @@ func main() {
 		logutil.LoggerDB().Panic("failed to connect to database")
 	}
 
-	var city City
-	city.SetIsKnown(false)
-	city.SetName("Groningen")
-	city.SetDeletedTime(time.Now())
-	city.SetID(1)
+	// var city City
+	// city.SetIsKnown(false)
+	// city.SetName("Groningen")
+	// city.SetDeletedTime(time.Now())
+	// city.SetID(1)
 
 	// fmt.Println(reflectutil.GetFieldTag(city,city.ID,"field"))
 
-	citymodel := database.NewTableQuery(db, "city", city)
+	// citymodel := database.NewTableQuery(db, "city", city)
 
 	// var filters []filter.Filter
 	// filters = append(filters, filter.NewAndFilter("id", "2"))
@@ -130,17 +130,17 @@ func main() {
 	// orders = append(orders, order.NewOrderDescending("id"))
 	// citymodel.SetOrders(orders)
 
-	res, querr := citymodel.RetrieveAll()
+	// res, querr := citymodel.RetrieveAll()
 	// citymodel.Retrieve()
 
-	if querr != nil {
-		logutil.Logger(nil).Error(querr)
-	} else {
-		for  i := 0; i < len(res); i++ {
-			fmt.Println(string(res[:][i]))
-		}
-			
-	}
+	// if querr != nil {
+	// 	logutil.Logger(nil).Error(querr)
+	// } else {
+	// 	for  i := 0; i < len(res); i++ {
+	// 		fmt.Println(string(res[:][i]))
+	// 	}
+
+	// }
 
 	// res2,querr2 := citymodel.Retrieve()
 
@@ -160,6 +160,7 @@ func main() {
 	router.GET("/forbidden/", forbidden)
 	router.GET("/protected/", protected, middleware.JwtMiddleware)
 	router.GET("/credential/", credential)
+	router.GET("/city/", getCity)
 
 	hello.Routes(router)
 
@@ -197,4 +198,12 @@ func credential(c echo.Context) error {
 		Token: token,
 	}
 	return c.JSON(http.StatusOK, a)
+}
+
+func getCity(c echo.Context) error {
+	messages := make(chan string)
+	go func() { messages <- "ping" }()
+	msg := <-messages
+	logutil.Logger(c).Info(msg)
+	return c.String(http.StatusOK, "Test")
 }

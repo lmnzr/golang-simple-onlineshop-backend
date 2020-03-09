@@ -33,9 +33,8 @@ Just A Project To Learn and Explore Go Lang
 - [x] Logging Middleware
 - [x] Separate Configuration From Code
 - [x] JWT Middleware
-- [ ] DB Model
-- [ ] DB Migration
-- [ ] Async Write To DB Using Go Routine And Channel
+- [x] DB Model
+- [x] Async Write To DB Using Go Routine And Channel
 ### Second Milestone
 - [ ] User Schema
 - [ ] [User] Register New User
