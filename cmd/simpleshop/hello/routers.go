@@ -7,6 +7,7 @@ import (
 
 // Routes : All Hello Routing
 func Routes(router *echo.Echo) {
+	
 	// Routes
 	hello := router.Group("/hello")
 	{

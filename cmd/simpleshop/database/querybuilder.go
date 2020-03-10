@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/database/filter"
-	reflectutil "github.com/lmnzr/simpleshop/cmd/simpleshop/helper/model"
+	reflectutil "github.com/lmnzr/simpleshop/cmd/simpleshop/helper/reflect"
 )
 
 type queryBuilder struct {

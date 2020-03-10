@@ -2,16 +2,22 @@ package controllers
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/labstack/echo-contrib/session"
 	"github.com/labstack/echo/v4"
+	"github.com/lmnzr/simpleshop/cmd/simpleshop/database"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/hello/models"
+	"github.com/lmnzr/simpleshop/cmd/simpleshop/types"
 )
 
 //GetMyHello : Function Return MyHello
 func GetMyHello(helloWord string, c echo.Context) *models.Hello {
+	cc := c.(*types.DBContext)
+
 	hello := new(models.Hello)
-	sess, _ := session.Get("session", c)
+	log := new(models.HelloLog)
+	sess, _ := session.Get("session", cc.Context)
 
 	message := "Hello World !!!"
 	if m := sess.Values["message"]; m != nil {
@@ -24,6 +30,11 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 	}
 
 	hello.SetMessage(message).SetOrigin(origin).SetStatus(200)
+	log.SetMessage(message).SetOrigin(origin).SetIsSent(true).SetTimestamp(time.Now())
+
+	logquery := database.NewTableQuery(cc.DB, log.GetTableName(), *log)
+	logquery.Insert()
+
 	return hello
 }
 

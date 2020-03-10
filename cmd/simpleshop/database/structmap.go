@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/lmnzr/simpleshop/cmd/simpleshop/models"
+	nulltype "github.com/lmnzr/simpleshop/cmd/simpleshop/types"
 )
 
 //StructMap : Map struct to arrays
@@ -33,15 +33,15 @@ func maptype(types []interface{}, t reflect.Type, i int) []interface{} {
 
 	switch fieldtype {
 	case "int":
-		types = append(types, new(models.NullInt))
+		types = append(types, new(nulltype.NullInt))
 	case "float":
-		types = append(types, new(models.NullFloat))
+		types = append(types, new(nulltype.NullFloat))
 	case "boolean":
-		types = append(types, new(models.NullBool))
+		types = append(types, new(nulltype.NullBool))
 	case "datetime":
-		types = append(types, new(models.NullTime))
+		types = append(types, new(nulltype.NullTime))
 	default:
-		types = append(types, new(models.NullString))
+		types = append(types, new(nulltype.NullString))
 	}
 
 	return types
@@ -58,31 +58,31 @@ func mapvalue(fields []string, values []interface{}, indexes []int, tagname stri
 
 	switch fieldtype {
 	case "int":
-		if val.(models.NullInt).Valid {
+		if val.(nulltype.NullInt).Valid {
 			fields = append(fields, mapfield(t.Field(i), tagname))
 			values = append(values, val)
 			indexes = append(indexes,i)
 		}
 	case "float":
-		if val.(models.NullString).Valid {
+		if val.(nulltype.NullString).Valid {
 			fields = append(fields, mapfield(t.Field(i), tagname))
 			values = append(values, val)
 			indexes = append(indexes,i)
 		}
 	case "boolean":
-		if val.(models.NullBool).Valid {
+		if val.(nulltype.NullBool).Valid {
 			fields = append(fields, mapfield(t.Field(i), tagname))
 			values = append(values, val)
 			indexes = append(indexes,i)
 		}
 	case "datetime":
-		if val.(models.NullTime).Valid {
+		if val.(nulltype.NullTime).Valid {
 			fields = append(fields, mapfield(t.Field(i), tagname))
 			values = append(values, val)
 			indexes = append(indexes,i)
 		}
 	case "string":
-		if val.(models.NullString).Valid {
+		if val.(nulltype.NullString).Valid {
 			fields = append(fields, mapfield(t.Field(i), tagname))
 			values = append(values, val)
 			indexes = append(indexes,i)
@@ -137,12 +137,12 @@ func mapping(model interface{}, tagname string, flag tag, hidden bool, cmdtype s
 
 			switch fieldtype {
 			case "int":
-				if val.(models.NullInt).Valid {
-					value = fmt.Sprintf("%d", val.(models.NullInt).Int64)
+				if val.(nulltype.NullInt).Valid {
+					value = fmt.Sprintf("%d", val.(nulltype.NullInt).Int64)
 				}
 			case "string":
-				if val.(models.NullString).Valid {
-					value = val.(models.NullString).String.String
+				if val.(nulltype.NullString).Valid {
+					value = val.(nulltype.NullString).String.String
 				}
 			}
 

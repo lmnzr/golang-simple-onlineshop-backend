@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"encoding/json"
-	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
@@ -29,7 +27,5 @@ func HTTPResponseOk(data string) *HTTPResponse {
 // @Router / [get]
 func Hello(context echo.Context) error {
 	data := HTTPResponseOk("Hello World !!!")
-	jsondata, _ := json.Marshal(data)
-	fmt.Println(string(jsondata))
 	return context.JSON(http.StatusOK, data)
 }
