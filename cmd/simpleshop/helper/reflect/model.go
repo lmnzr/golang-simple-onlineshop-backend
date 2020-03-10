@@ -1,4 +1,4 @@
-package model
+package reflect
 
 import (
 	"encoding/json"
