@@ -2,7 +2,7 @@
 Just A Project To Learn and Explore Go Lang
 
 ## Stack
-- Go Lang
+- GoLang
 - Echo (Go Minimalist Web Framework)
 - MariaDB/MySQL (Database)
 - Docker
