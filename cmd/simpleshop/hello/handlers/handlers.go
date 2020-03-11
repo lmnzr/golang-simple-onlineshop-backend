@@ -21,8 +21,7 @@ func GetHello(context echo.Context) error {
 // @Summary Save Our Favorite words
 // @Produce json
 // @Success 200 {object} models.Hello
-// @Param m body string true "Your Own Hello Word"
-// @Param o body string true "Your Own Hello Word Signature"
+// @Param hello body models.Hello true "Your Own Hello Word"
 // @Router /hello/ [post]
 func PostHello(context echo.Context) error {
 	data := controllers.PostMyHello(context)

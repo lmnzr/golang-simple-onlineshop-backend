@@ -17,6 +17,7 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 
 	hello := new(models.Hello)
 	log := new(models.HelloLog)
+
 	sess, _ := session.Get("session", cc.Context)
 
 	message := "Hello World !!!"
@@ -29,7 +30,7 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 		origin = fmt.Sprintf("%v", sess.Values["origin"])
 	}
 
-	hello.SetMessage(message).SetOrigin(origin).SetStatus(200)
+	hello.SetMessage(message).SetOrigin(origin)
 	log.SetMessage(message).SetOrigin(origin).SetIsSent(true).SetTimestamp(time.Now())
 
 	logquery := database.NewTableQuery(cc.DB, log.GetTableName(), *log)
@@ -43,15 +44,12 @@ func PostMyHello(c echo.Context) *models.Hello {
 	hello := new(models.Hello)
 	err := c.Bind(hello)
 
-	if err != nil {
-		hello := new(models.Hello)
-		return hello
+	if err == nil {
+		sess, _ := session.Get("session", c)
+		sess.Values["message"] = hello.Message
+		sess.Values["origin"] = hello.Origin
+		sess.Save(c.Request(), c.Response())
 	}
 
-	sess, _ := session.Get("session", c)
-	sess.Values["message"] = hello.Message
-	sess.Values["origin"] = hello.Origin
-	sess.Save(c.Request(), c.Response())
-	hello.SetStatus(200)
 	return hello
 }

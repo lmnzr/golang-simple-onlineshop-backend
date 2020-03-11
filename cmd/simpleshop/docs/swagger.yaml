@@ -10,15 +10,12 @@ definitions:
     type: object
   models.Hello:
     properties:
-      d:
+      message:
         example: Hello World !!!
         type: string
-      o:
+      origin:
         example: Default
         type: string
-      s:
-        example: 200
-        type: integer
     type: object
 info:
   contact: {}
@@ -52,16 +49,10 @@ paths:
       parameters:
       - description: Your Own Hello Word
         in: body
-        name: m
+        name: hello
         required: true
         schema:
-          type: string
-      - description: Your Own Hello Word Signature
-        in: body
-        name: o
-        required: true
-        schema:
-          type: string
+          $ref: '#/definitions/models.Hello'
       produces:
       - application/json
       responses:

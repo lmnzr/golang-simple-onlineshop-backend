@@ -48,20 +48,11 @@
                 "parameters": [
                     {
                         "description": "Your Own Hello Word",
-                        "name": "m",
+                        "name": "hello",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "Your Own Hello Word Signature",
-                        "name": "o",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/models.Hello"
                         }
                     }
                 ],
@@ -93,17 +84,13 @@
         "models.Hello": {
             "type": "object",
             "properties": {
-                "d": {
+                "message": {
                     "type": "string",
                     "example": "Hello World !!!"
                 },
-                "o": {
+                "origin": {
                     "type": "string",
                     "example": "Default"
-                },
-                "s": {
-                    "type": "integer",
-                    "example": 200
                 }
             }
         }

@@ -19,7 +19,7 @@ func setup() map[string]string{
 		configmap["timezone"] = "Asia/Jakarta"
 	} else {
 		configmap["timeformat"] = config.GetString("loggerTimeFormat")
-		configmap["timezone"] = config.GetString("loggerTimeZone")
+		configmap["timezone"] = config.GetString("timeZone")
 	}
 	return configmap
 	

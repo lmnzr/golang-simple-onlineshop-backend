@@ -1,7 +1,8 @@
 {
   "appName": "simpleshop",
 
-  "loggerTimeZone": "Asia/Jakarta",
+  "timeZone": "Asia/Jakarta",
+
   "loggerTimeFormat": "2006-01-02T15:04:05",
 
   "sessionSecret": "thequickbrownfoxjumpoverthelazydog",
