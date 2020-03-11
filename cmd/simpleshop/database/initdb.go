@@ -47,7 +47,9 @@ func OpenDbConnection() (*sql.DB, error) {
 	dbHost := env.Getenv("DB_HOST", "localhost")
 	dbPort := env.Getenv("DB_PORT", "3306")
 	dbSchema := env.Getenv("DB_SCHEMA", "simpleshop")
-	dbConnString := fmt.Sprintf("%[1]s:%[2]s@tcp(%[3]s:%[4]s)/%[5]s?parseTime=true&charset=utf8&loc=%[6]s", dbUser, dbPass, dbHost, dbPort, dbSchema, timezone)
+	dbConnString :=
+		fmt.Sprintf("%[1]s:%[2]s@tcp(%[3]s:%[4]s)/%[5]s?parseTime=true&charset=utf8&loc=%[6]s",
+			dbUser, dbPass, dbHost, dbPort, dbSchema, timezone)
 
 	db, err := sql.Open("mysql", dbConnString)
 	if err != nil {

@@ -2,7 +2,7 @@ package database
 
 import "database/sql"
 
-//DBConn :
+//DBConn : Interface For sql.DB and sql.Tx
 type DBConn interface {
 	Query(string, ...interface{}) (*sql.Rows, error)
 	QueryRow(string, ...interface{}) *sql.Row
