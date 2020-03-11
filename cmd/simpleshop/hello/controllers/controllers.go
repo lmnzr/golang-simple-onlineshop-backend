@@ -41,7 +41,7 @@ func PostMyHello(c echo.Context) *models.Hello {
 	cc := c.(*types.DBContext)
 
 	hello := new(models.Hello)
-	err := cc.Context.Bind(hello)
+	err := c.Bind(hello)
 
 	if err == nil {
 		sess, _ := session.Get("session", c)
