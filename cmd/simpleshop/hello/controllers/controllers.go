@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"database/sql"
 	"fmt"
 	"time"
 
@@ -16,7 +17,6 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 	cc := c.(*types.DBContext)
 
 	hello := new(models.Hello)
-	log := new(models.HelloLog)
 
 	sess, _ := session.Get("session", cc.Context)
 
@@ -31,10 +31,7 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 	}
 
 	hello.SetMessage(message).SetOrigin(origin)
-	log.SetMessage(message).SetOrigin(origin).SetIsSent(true).SetTimestamp(time.Now())
-
-	logquery := database.NewTableQuery(cc.DB, log.GetTableName(), *log)
-	logquery.Insert()
+	go helloLogDB(hello, cc.DB)
 
 	return hello
 }
@@ -52,4 +49,11 @@ func PostMyHello(c echo.Context) *models.Hello {
 	}
 
 	return hello
+}
+
+func helloLogDB(hello *models.Hello, db *sql.DB) {
+	log := new(models.HelloLog)
+	log.SetMessage(hello.Message).SetOrigin(hello.Origin).SetIsSent(true).SetTimestamp(time.Now())
+	logquery := database.NewTableQuery(db, log.GetTableName(), *log)
+	logquery.Insert()
 }
