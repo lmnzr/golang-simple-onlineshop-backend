@@ -38,14 +38,17 @@ func GetMyHello(helloWord string, c echo.Context) *models.Hello {
 
 //PostMyHello : Function Save MyHello to Session
 func PostMyHello(c echo.Context) *models.Hello {
+	cc := c.(*types.DBContext)
+
 	hello := new(models.Hello)
-	err := c.Bind(hello)
+	err := cc.Context.Bind(hello)
 
 	if err == nil {
 		sess, _ := session.Get("session", c)
 		sess.Values["message"] = hello.Message
 		sess.Values["origin"] = hello.Origin
 		sess.Save(c.Request(), c.Response())
+		go helloLogDB(hello, cc.DB)
 	}
 
 	return hello
