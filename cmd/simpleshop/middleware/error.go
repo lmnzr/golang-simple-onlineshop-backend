@@ -9,14 +9,12 @@ import (
 
 //StandardError :
 type StandardError struct {
-	Status  int    `json:"s" xml:"s"`
-	Message string `json:"m" xml:"m"`
+	Message string `json:"error"`
 }
 
 //NewStandardError :
 func NewStandardError(message string, code int, router echo.Context) {
 	error := &StandardError{
-		Status:  code,
 		Message: message,
 	}
 	router.JSON(code, error)

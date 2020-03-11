@@ -80,7 +80,6 @@ func main() {
 	router.GET("/forbidden/", forbidden)
 	router.GET("/protected/", protected, middleware.JwtMiddleware)
 	router.GET("/credential/", credential)
-	router.GET("/city/", getCity)
 
 	hello.Routes(router)
 
@@ -122,14 +121,4 @@ func credential(c echo.Context) error {
 		Token: token,
 	}
 	return cc.Context.JSON(http.StatusOK, a)
-}
-
-func getCity(c echo.Context) error {
-	cc := c.(*types.DBContext)
-
-	messages := make(chan string)
-	go func() { messages <- "ping" }()
-	msg := <-messages
-	logutil.Logger(c).Info(msg)
-	return cc.Context.String(http.StatusOK, "Test")
 }
