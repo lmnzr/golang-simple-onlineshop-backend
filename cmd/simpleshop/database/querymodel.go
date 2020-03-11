@@ -1,8 +1,6 @@
 package database
 
 import (
-	"database/sql"
-
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/database/filter"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/database/group"
 	"github.com/lmnzr/simpleshop/cmd/simpleshop/database/order"
@@ -10,21 +8,19 @@ import (
 
 //QueryModel : Database Access Object
 type QueryModel struct {
-	DBConn        *sql.DB
-	Model         interface{}
-	Table         string
-	Limit         int
-	Offset        int
-	Filters       []filter.Filter
-	Orders        []order.Order
-	Groups        []group.Group
-	Error         []string
-	DBConnTx      *sql.Tx
-	Transaction   bool
+	DBConn  DBConn
+	Model   interface{}
+	Table   string
+	Limit   int
+	Offset  int
+	Filters []filter.Filter
+	Orders  []order.Order
+	Groups  []group.Group
+	Error   []string
 }
 
 //NewQuery : Create Database Access Object With Generated Query
-func NewQuery(dbcon *sql.DB, tablename string, model interface{}) QueryModel {
+func NewQuery(dbcon DBConn, tablename string, model interface{}) QueryModel {
 	return QueryModel{
 		DBConn: dbcon,
 		Table:  tablename,
@@ -33,27 +29,9 @@ func NewQuery(dbcon *sql.DB, tablename string, model interface{}) QueryModel {
 }
 
 //NewQueryCustom : Create Database Access Object With Custom Query
-func NewQueryCustom(dbcon *sql.DB) QueryModel {
+func NewQueryCustom(dbcon DBConn) QueryModel {
 	return QueryModel{
 		DBConn: dbcon,
-	}
-}	
-
-//NewTransaction : Create Database Access Object With Generated Query (Transaction)
-func NewTransaction(tx *sql.Tx, tablename string, model interface{}) QueryModel {
-	return  QueryModel{
-		Table:  tablename,
-		Model:  model,
-		Transaction: true,
-		DBConnTx: tx,
-	}
-}
-
-//NewTransactionCustom : Create Database Access Object With Custom Query (Transaction)
-func NewTransactionCustom(tx *sql.Tx) QueryModel {
-	return QueryModel{
-		Transaction: true,
-		DBConnTx: tx,
 	}
 }
 

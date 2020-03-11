@@ -1,37 +1,21 @@
 package database
 
-import "database/sql"
-
 //TableQuery : Query For SQL Database Table
 type TableQuery struct {
 	QueryModel
 }
 
 //NewTableQuery : Create Database Access Object With Generated Query
-func NewTableQuery(dbcon *sql.DB, tablename string, model interface{}) TableQuery {
+func NewTableQuery(dbcon DBConn, tablename string, model interface{}) TableQuery {
 	return TableQuery{
 		NewQuery(dbcon, tablename, model),
 	}
 }
 
 //NewTableQueryCustom : Create Database Access Object With Custom Query
-func NewTableQueryCustom(dbcon *sql.DB) TableQuery {
+func NewTableQueryCustom(dbcon DBConn) TableQuery {
 	return TableQuery{
 		NewQueryCustom(dbcon),
-	}
-}
-
-//NewTableTransaction : Create Database Access Object With Generated Query (Transaction)
-func NewTableTransaction(tx *sql.Tx, tablename string, model interface{}) TableQuery {
-	return TableQuery{
-		NewTransaction(tx, tablename, model),
-	}
-}
-
-//NewTableTransactionCustom : Create Database Access Object With Custom Query (Transaction)
-func NewTableTransactionCustom(tx *sql.Tx, tablename string) TableQuery {
-	return TableQuery{
-		NewTransactionCustom(tx),
 	}
 }
 

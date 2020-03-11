@@ -22,11 +22,7 @@ type DBQuery struct {
 func queryRows(dbQuery DBQuery, qm QueryModel) (results [][]byte, err error) {
 	var rows *sql.Rows
 
-	if !qm.Transaction {
-		rows, err = qm.DBConn.Query(dbQuery.QueryString, dbQuery.QueryParam...)
-	} else {
-		rows, err = qm.DBConnTx.Query(dbQuery.QueryString, dbQuery.QueryParam...)
-	}
+	rows, err = qm.DBConn.Query(dbQuery.QueryString, dbQuery.QueryParam...)
 
 	resultmap := make(map[string]interface{})
 	for i := 0; i < len(dbQuery.SelectField); i++ {
@@ -57,11 +53,7 @@ func queryRows(dbQuery DBQuery, qm QueryModel) (results [][]byte, err error) {
 func queryRow(dbQuery DBQuery, qm QueryModel) (result []byte, err error) {
 	var row *sql.Row
 
-	if !qm.Transaction {
-		row = qm.DBConn.QueryRow(dbQuery.QueryString, dbQuery.QueryParam...)
-	} else {
-		row = qm.DBConnTx.QueryRow(dbQuery.QueryString, dbQuery.QueryParam...)
-	}
+	row = qm.DBConn.QueryRow(dbQuery.QueryString, dbQuery.QueryParam...)
 
 	resultmap := make(map[string]interface{})
 	for i := 0; i < len(dbQuery.SelectField); i++ {
@@ -84,11 +76,7 @@ func queryRow(dbQuery DBQuery, qm QueryModel) (result []byte, err error) {
 func queryExec(dbQuery DBQuery, qm QueryModel) (result sql.Result, err error) {
 	var stmt *sql.Stmt
 
-	if !qm.Transaction {
-		stmt, err = qm.DBConn.Prepare(dbQuery.QueryString)
-	} else {
-		stmt, err = qm.DBConnTx.Prepare(dbQuery.QueryString)
-	}
+	stmt, err = qm.DBConn.Prepare(dbQuery.QueryString)
 
 	result, err = stmt.Exec(dbQuery.QueryParam...)
 
