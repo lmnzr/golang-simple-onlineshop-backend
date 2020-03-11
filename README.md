@@ -2,10 +2,9 @@
 Just A Project To Learn and Explore Go Lang
 
 ## Stack
-- Go Lang
+- GoLang
 - Echo (Go Minimalist Web Framework)
-- GORM (Go ORM)
-- PostgreSQL (Database)
+- MariaDB/MySQL (Database)
 - Docker
 - Kubernetes
 - Travis CI/CD
@@ -16,10 +15,10 @@ Just A Project To Learn and Explore Go Lang
 - [ ] Transaction
 
 ## Branch Milestone
-- Development (Playground)
-- Basic (First Milestone Basic HTTP Server)
-- Monolith (Second Milestone Monolith Application)
-- Master (Latest Milestone)/(Final Milestone - Kubernetes Ready Microservices Application)
+- [x] Development (Playground)
+- [x] Basic (First Milestone Basic HTTP Server)
+- [ ] Monolith (Second Milestone Monolith Application)
+- [ ] Master (Latest Milestone)/(Final Milestone - Kubernetes Ready Microservices Application)
 
 ## Milestones
 ### First Milestone
