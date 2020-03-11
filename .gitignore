@@ -1,17 +1,17 @@
 # Binaries for programs and plugins
 *.exe
+*.bin
 *.exe~
 *.dll
 *.so
 *.dylib
-
+*.log
+var
 # IDE
 .vscode
 
 # Go Module
 vendor
-
-# GO Module Summary
 *.sum
 
 # Test binary, built with `go test -c`
@@ -20,3 +20,7 @@ vendor
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 cover.*
+
+.env
+
+build

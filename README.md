@@ -5,7 +5,7 @@ Just A Project To Learn and Explore Go Lang
 - Go Lang
 - Echo (Go Minimalist Web Framework)
 - GORM (Go ORM)
-- MySQL (Database)
+- PostgreSQL (Database)
 - Docker
 - Kubernetes
 - Travis CI/CD
@@ -21,19 +21,20 @@ Just A Project To Learn and Explore Go Lang
 - Monolith (Second Milestone Monolith Application)
 - Master (Latest Milestone)/(Final Milestone - Kubernetes Ready Microservices Application)
 
-## Milestone
+## Milestones
 ### First Milestone
 - [x] Basic Structure
 - [x] Healtcheck/Hello Endpoint
 - [x] Test Case Backbone
 - [x] Coverage Test Backbone
 - [x] Makefile
-- [ ] CORS Configuration
-- [ ] OpenAPI / Swagger Documentation
-- [ ] Logging Middleware
-- [ ] Separate Configuration From Code
-- [ ] Enable Setup Port From CLI
-- [ ] JWT Middleware
+- [x] CORS Configuration
+- [x] OpenAPI / Swagger Documentation
+- [x] Logging Middleware
+- [x] Separate Configuration From Code
+- [x] JWT Middleware
+- [x] DB Model
+- [x] Async Write To DB Using Go Routine And Channel
 ### Second Milestone
 - [ ] User Schema
 - [ ] [User] Register New User

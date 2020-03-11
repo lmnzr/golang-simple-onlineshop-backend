@@ -1,0 +1,64 @@
+definitions:
+  handler.HTTPResponse:
+    properties:
+      d:
+        example: Hello World !!!
+        type: string
+      s:
+        example: 200
+        type: integer
+    type: object
+  models.Hello:
+    properties:
+      message:
+        example: Hello World !!!
+        type: string
+      origin:
+        example: Default
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Swagger API for Golang Project Simpleshop.
+  license: {}
+  termsOfService: http://swagger.io/terms/
+  title: Simpleshop Swagger API
+  version: "1.0"
+paths:
+  /:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.HTTPResponse'
+      summary: Our Favorite words
+  /hello/:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Hello'
+      summary: Get Our Favorite words
+    post:
+      parameters:
+      - description: Your Own Hello Word
+        in: body
+        name: hello
+        required: true
+        schema:
+          $ref: '#/definitions/models.Hello'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Hello'
+      summary: Save Our Favorite words
+swagger: "2.0"

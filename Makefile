@@ -1,11 +1,21 @@
+moduleowner = github.com/lmnzr/
+packagename = simpleshop
 # Build And Development
+init:
+	@ go mod init $(moduleowner)$(packagename)
+	@ go mod vendor 
+update:
+	@ go mod vendor
 clean:
-	@ rm -f *.out || rm -f *.html || rm -f *.exe 
+	@ sudo rm -rf $(packagename).bin $(packagename).exe cover.txt cover.html cover.out build
 test:
-	@ go test simpleshop/test/... 
+	@ go test $(moduleowner)$(packagename)/test/... 
 test-cover:
-	@ go test simpleshop/test/... -coverpkg=./... -coverprofile=cover.txt
-	@ go tool cover -html=cover.txt -o cover.html   
+	@ mkdir -p build
+	@ go test $(moduleowner)$(packagename)/test/... -coverpkg=./... -coverprofile=./build/cover.out
+	@ go tool cover -html=./build/cover.out -o ./build/cover.html   
 run:
-	@ go build && ./simpleshop	                                                                                 
-.PHONY: run test test-cover clean
+	@ go build -o ./build/$(packagename).bin $(moduleowner)$(packagename)/cmd/$(packagename)  && ./build/$(packagename).bin	  
+swagger:
+	@ cd cmd/$(packagename) && swag init
+.PHONY: init update run test test-cover clean swagger
