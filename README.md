@@ -1,4 +1,4 @@
-# Golang Simple API For Dummy Onlineshop
+# Golang Simple API For Onlineshop
 Just A Project To Learn and Explore Go Lang
 
 ## Stack
